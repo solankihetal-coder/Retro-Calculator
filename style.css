@@ -1,0 +1,233 @@
+:root {
+    /* ... (your existing theme variables) ... */
+    --theme1-bg: #4a3e5c;
+    --theme1-border: #2c2436;
+    --theme1-display-bg: #32a032;
+    --theme1-display-text: #e6ffb5;
+    --theme1-btn-bg: #8c7ba2;
+    --theme1-btn-border: #5e5070;
+    --theme1-btn-text: #2c2436;
+    --theme1-clear-btn-bg: #ff69b4;
+    --theme1-equals-btn-bg: #ffa500;
+    --theme1-special-btn-bg: #7f7f7f;
+
+    --theme2-bg: #304e60;
+    --theme2-border: #1a2a34;
+    --theme2-display-bg: #7ea63d;
+    --theme2-display-text: #bccee0;
+    --theme2-btn-bg: #6a8c9e;
+    --theme2-btn-border: #405a68;
+    --theme2-btn-text: #1a2a34;
+    --theme2-clear-btn-bg: #ff4500;
+    --theme2-equals-btn-bg: #ffd700;
+    --theme2-special-btn-bg: #a0a0a0;
+
+    --pixel-border: 4px;
+    --pixel-shadow: 4px;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--theme1-bg);
+    transition: background-color 0.3s;
+    overflow: hidden;
+}
+
+body.theme2 {
+    background-color: var(--theme2-bg);
+}
+
+.calculator-container {
+    /* Change to column direction to stack elements */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Space between calculator and button */
+}
+
+
+.theme-toggle button {
+    background-color: var(--theme1-btn-bg);
+    color: var(--theme1-btn-text);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7em;
+    cursor: pointer;
+    box-shadow: var(--pixel-shadow) var(--pixel-shadow) 0 var(--theme1-btn-border);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+body.theme2 .theme-toggle button {
+    background-color: var(--theme2-btn-bg);
+    color: var(--theme2-btn-text);
+    box-shadow: var(--pixel-shadow) var(--pixel-shadow) 0 var(--theme2-btn-border);
+}
+
+.theme-toggle button:active {
+    transform: translate(var(--pixel-shadow), var(--pixel-shadow));
+    box-shadow: none;
+}
+
+
+.calculator {
+    width: 360px;
+    padding: 20px;
+    border: var(--pixel-border) solid var(--theme1-border);
+    background-color: var(--theme1-bg);
+    box-shadow: var(--pixel-shadow) var(--pixel-shadow) 0 var(--theme1-border);
+    border-radius: 8px;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+body.theme2 .calculator {
+    border-color: var(--theme2-border);
+    background-color: var(--theme2-bg);
+    box-shadow: var(--pixel-shadow) var(--pixel-shadow) 0 var(--theme2-border);
+}
+
+.title {
+    font-size: 1em;
+    color: var(--theme1-display-text); /* Matches display text color for contrast */
+    text-align: left;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    text-shadow: 2px 2px 0 var(--theme1-border);
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+body.theme2 .title {
+    color: var(--theme2-display-text);
+    text-shadow: 2px 2px 0 var(--theme2-border);
+}
+
+.display {
+    background-color: var(--theme1-display-bg);
+    border: var(--pixel-border) solid var(--theme1-border);
+    padding: 15px 10px;
+    border-radius: 5px;
+    text-align: right;
+    margin-bottom: 20px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 2em;
+    color: var(--theme1-display-text);
+    overflow: hidden;
+    word-wrap: break-word;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+body.theme2 .display {
+    background-color: var(--theme2-display-bg);
+    border-color: var(--theme2-border);
+    color: var(--theme2-display-text);
+}
+
+.display .current-expression {
+    font-size: 0.6em;
+    opacity: 0.8;
+    min-height: 0.8em;
+    text-align: left;
+}
+
+.display .result {
+    font-size: 1.5em;
+    min-height: 1.5em;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    padding: 15px 0;
+    font-size: 1.2em;
+    font-family: 'Press Start 2P', cursive;
+    border-radius: 5px;
+    background-color: var(--theme1-btn-bg);
+    color: var(--theme1-btn-text);
+    cursor: pointer;
+    box-shadow: var(--pixel-shadow) var(--pixel-shadow) 0 var(--theme1-btn-border);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    line-height: 1; /* Adjust for pixel font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body.theme2 .btn {
+    background-color: var(--theme2-btn-bg);
+    color: var(--theme2-btn-text);
+    box-shadow: var(--pixel-shadow) var(--pixel-shadow) 0 var(--theme2-btn-border);
+}
+
+.btn:active {
+    transform: translate(var(--pixel-shadow), var(--pixel-shadow));
+    box-shadow: none;
+}
+
+.btn.clear {
+    background-color: var(--theme1-clear-btn-bg);
+    color: var(--theme1-btn-text);
+}
+body.theme2 .btn.clear {
+    background-color: var(--theme2-clear-btn-bg);
+    color: var(--theme2-btn-text);
+}
+
+
+.btn.equals {
+    background-color: var(--theme1-equals-btn-bg);
+    color: var(--theme1-btn-text);
+}
+body.theme2 .btn.equals {
+    background-color: var(--theme2-equals-btn-bg);
+    color: var(--theme2-btn-text);
+}
+
+.btn.special {
+    background-color: var(--theme1-special-btn-bg);
+    color: var(--theme1-btn-text);
+}
+body.theme2 .btn.special {
+    background-color: var(--theme2-special-btn-bg);
+    color: var(--theme2-btn-text);
+}
+
+
+.btn.zero {
+    grid-column: span 2;
+}
+
+/* Specific styling for operators based on image */
+.btn.negate,
+.btn.percent,
+.btn.multiply,
+.btn.subtract,
+.btn.add {
+    font-size: 1.5em; /* Make operators slightly larger for pixel art feel */
+}
+
+/* For the integral symbol, if we use a text char */
+.btn.integral {
+    font-size: 1.8em;
+}
+
+/* Visual tweaks for specific buttons to match image where necessary */
+.btn.multiply {
+    /* The image has a specific 'x' char, ensure font supports it or use image */
+    /* For now, relying on 'x' character */
+}
